@@ -1,4 +1,3 @@
-
 {
   "extends": ["@commitlint/config-conventional"],
   "rules": {
@@ -34,7 +33,8 @@
       "security",
       "style",
       "refactor",
-      "test"
+      "test",
+      "config"
     ]]
   }
 }

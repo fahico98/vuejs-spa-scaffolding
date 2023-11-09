@@ -11,6 +11,7 @@
     "release": "standard-version"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.6",
     "axios": "^1.6.0",
     "bootstrap-icons": "^1.11.1",
     "mitt": "^3.0.1",
