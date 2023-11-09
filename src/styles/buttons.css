@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Sizes */
+
+  .btn-lg {
+    @apply flex items-center justify-center rounded-lg border-2 focus:ring-0 focus:outline-none px-5 py-2 font-sans text-xl font-normal transition duration-[250ms];
+  }
+  .btn-md {
+    @apply flex items-center justify-center rounded-lg border-2 focus:ring-0 focus:outline-none px-4 py-1.5 font-sans text-base font-normal transition duration-[250ms];
+  }
+  .btn-sm {
+    @apply flex items-center justify-center rounded-md border-2 focus:ring-0 focus:outline-none px-3 py-1 font-sans text-sm font-normal transition duration-[250ms];
+  }
+
+  /* Colors */
+
+  .btn-my-yellow {
+    @apply select-none text-black border-black bg-my-yellow hover:bg-my-yellow-dark active:bg-my-yellow-dark focus:ring-2 focus:ring-my-yellow;
+  }
+}

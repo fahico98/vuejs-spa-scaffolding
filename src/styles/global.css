@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+  background-color: #ffffff;
+}
+
+@layer components {
+  span,
+  label,
+  p,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-wide selection:bg-my-yellow selection:text-black;
+  }
+
+  .router-view {
+    @apply mt-16 w-full flex justify-center;
+  }
+
+  .margin-x {
+    @apply lg:mx-20 md:mx-10 sm:mx-5 xs:mx-2.5 mx-2;
+  }
+
+  .max-width {
+    @apply max-w-screen-xl;
+  }
+
+  .height-full-screen {
+    @apply h-[calc(100vh-4rem)];
+  }
+
+  .min-height-full-screen {
+    @apply min-h-[calc(100vh-4rem)];
+  }
+
+  .max-height-full-screen {
+    @apply max-h-[calc(100vh-4rem)];
+  }
+}
