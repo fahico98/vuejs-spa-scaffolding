@@ -40,7 +40,7 @@
   <div>
     <ViewTemplate>
       <div class="login height-full-screen">
-        <form @submit.prevent="login" class="login-form">
+        <form class="login-form" @submit.prevent="login">
           <div>
             <h3 class="login-title mb-4">Ingresa a tu cuenta</h3>
             <p class="login-subtitle">
