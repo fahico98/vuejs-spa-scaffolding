@@ -13,12 +13,6 @@ export default {
       ...defaultTheme.screens
     },
 
-    fontFamily: {
-      sans: ["Rubik", ...defaultTheme.fontFamily.sans], // Texto base (By default)
-      serif: ["Poppins", ...defaultTheme.fontFamily.serif], // Títulos y subtitulos
-      mono: ["Red Hat Mono", ...defaultTheme.fontFamily.mono] // Enlaces y botones
-    },
-
     extend: {
       colors: {
         "my-yellow": "#FFCD05",

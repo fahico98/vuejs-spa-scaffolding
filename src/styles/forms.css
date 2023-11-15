@@ -18,13 +18,17 @@
   /* Input colors */
 
   .input-my-yellow {
-    @apply bg-white text-black ring-gray-600 placeholder:text-gray-600 focus:ring-my-yellow tracking-wide selection:bg-my-yellow selection:text-white;
+    @apply bg-white text-gray-600 ring-gray-300 placeholder:text-gray-300 focus:ring-my-yellow tracking-wide selection:bg-my-yellow selection:text-white;
   }
   .input-error {
     @apply bg-white text-red-600 ring-red-600 placeholder:text-red-200 focus:ring-red-600 tracking-wide selection:bg-red-600 selection:text-white;
   }
   .input-success {
     @apply bg-white text-green-500 ring-green-500 placeholder:text-green-200 focus:ring-green-500 tracking-wide selection:bg-green-500 selection:text-white;
+  }
+
+  .input-indigo {
+    @apply bg-white text-gray-600 ring-gray-300 placeholder:text-gray-300 focus:ring-indigo-600 tracking-wide selection:bg-indigo-600 selection:text-white;
   }
 
   /* Label sizes */
@@ -45,13 +49,16 @@
     @apply text-my-yellow;
   }
   .label-black {
-    @apply text-black;
+    @apply text-gray-600;
   }
   .label-error {
     @apply text-red-600;
   }
   .label-success {
     @apply text-green-600;
+  }
+  .label-indigo {
+    @apply text-indigo-600;
   }
 
   /* Help text sizes */
@@ -80,6 +87,9 @@
   .help-success {
     @apply text-green-500;
   }
+  .help-indigo {
+    @apply text-indigo-600;
+  }
 
   /* Checkbox sizes */
 
@@ -96,6 +106,9 @@
   /* Checkbox colors */
 
   .checkbox-my-yellow {
-    @apply border-gray-300 text-black focus:ring-my-yellow;
+    @apply border-gray-300 text-gray-600 focus:ring-my-yellow;
+  }
+  .checkbox-indigo {
+    @apply border-gray-300 text-gray-600 focus:ring-indigo-600;
   }
 }

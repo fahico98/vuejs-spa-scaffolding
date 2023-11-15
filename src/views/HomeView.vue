@@ -1,6 +1,6 @@
 <script setup>
   import ViewTemplate from "@/components/global/ViewTemplate.vue"
-  import InnClodLogo from "@/assets/images/InnClodLogo.png"
+  import BootstrapLogo from "@/assets/images/bootstrap_logo.png"
 </script>
 
 <template>
@@ -9,9 +9,11 @@
       <div class="home height-full-screen">
         <div class="home-grid">
           <div class="w-full">
-            <img class="home-image" :src="InnClodLogo" alt="Inn Clod logo" />
+            <img :src="BootstrapLogo" alt="Bootstrap logo" class="home-image" />
+
             <h3 class="home-subtitle">Ingresa con tus credenciales o regístrate con tu correo electrónico para iniciar</h3>
-            <button class="btn-lg btn-my-yellow" type="button" @click="$router.push({ name: 'sign-in' })">
+
+            <button class="btn-lg btn-indigo" type="button" @click="$router.push({ name: 'login' })">
               Iniciar&nbsp;<i class="bi bi-arrow-right-circle ml-1"></i>
             </button>
           </div>
@@ -25,13 +27,16 @@
   .home {
     @apply w-full flex justify-center items-center;
   }
+
   .home-grid {
     @apply w-full grid grid-cols-2 gap-x-5;
   }
+
   .home-image {
-    @apply object-contain h-20 mb-6;
+    @apply object-contain h-32 mb-8;
   }
+
   .home-subtitle {
-    @apply text-2xl font-sans font-normal text-black mb-8;
+    @apply text-2xl font-sans font-normal text-gray-600 mb-10;
   }
 </style>

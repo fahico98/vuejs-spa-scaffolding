@@ -24,7 +24,7 @@
   h4,
   h5,
   h6 {
-    @apply tracking-wide selection:bg-my-yellow selection:text-black;
+    @apply tracking-wide selection:bg-indigo-600 selection:text-white;
   }
 
   .router-view {
