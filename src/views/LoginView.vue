@@ -1,9 +1,11 @@
 <script setup>
   import ViewTemplate from "@/components/global/ViewTemplate.vue"
   import { useAuthStore } from "@/pinia/auth.js"
+  import { useRouter } from "vue-router"
   import { ref } from "vue"
 
   const authStore = useAuthStore()
+  const router = useRouter()
 
   const form = ref({
     email: null,
@@ -14,19 +16,13 @@
     await authStore
       .login(form.value.email, form.value.password)
       .then(async (response) => {
-        if (response.status === 204) {
-          await authStore
-            .me()
-            .then((response) => {
-              if (response.status === 200) {
-                authStore.$patch({ user: response.data.user })
-                authStore.setStorageAuthentication()
-              }
-            })
-            .catch((error) => {
-              authStore.$reset()
-              console.log(error)
-            })
+        if (response.status === 200) {
+          authStore.$patch({ user: response.data.user })
+          authStore.setStorageAuthentication()
+          router.push({
+            name: "user-profile",
+            params: { userId: authStore.user.id }
+          })
         }
       })
       .catch((error) => {
@@ -44,7 +40,9 @@
           <div>
             <h3 class="login-title mb-4">Ingresa a tu cuenta</h3>
             <p class="login-subtitle">
-              Si aún no tienes una cuenta puedes <router-link :to="{ name: 'register' }" class="login-link">registrarte</router-link> completamente gratis.
+              Si aún no tienes una cuenta puedes
+              <router-link :to="{ name: 'register' }" class="login-link">registrarte</router-link>
+              completamente gratis.
             </p>
           </div>
 

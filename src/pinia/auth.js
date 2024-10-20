@@ -2,6 +2,12 @@ import { defineStore } from "pinia"
 import { computed, ref } from "vue"
 import axios from "@/lib/axios"
 
+// import axios from "axios"
+
+async function requestCsrfToken() {
+  await axios.get(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`)
+}
+
 // You can name the return value of `defineStore()` anything you want, but it's best to use the name of the store and surround it with `use`
 // and `Store` (e.g. `useUserStore`, `useCartStore`, `useProductStore`) the first argument is a unique id of the store across your application.
 export const useAuthStore = defineStore("auth", () => {
@@ -15,20 +21,20 @@ export const useAuthStore = defineStore("auth", () => {
 
   // Actions
 
-  function checkXsrfTokenCookie() {
-    let cookiesArray = document.cookie.split(";")
-    return cookiesArray.some((cookieStr) => cookieStr.split("=")[0] === "XSRF-TOKEN")
-  }
-
-  async function requestCsrfToken() {
-    await axios.get(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`)
-  }
+  // function checkXsrfTokenCookie() {
+  //   let cookiesArray = document.cookie.split(";")
+  //   return cookiesArray.some((cookieStr) => cookieStr.split("=")[0] === "XSRF-TOKEN")
+  // }
 
   async function login(email, password) {
+    await requestCsrfToken()
     return await axios.post(`${import.meta.env.VITE_API_URL}/login`, { email, password })
   }
 
-  async function register() {}
+  async function register(params) {
+    await requestCsrfToken()
+    return await axios.post(`${import.meta.env.VITE_API_URL}/register`, params)
+  }
 
   async function logout() {
     await axios.post(`${import.meta.env.VITE_API_URL}/logout`)
@@ -66,11 +72,8 @@ export const useAuthStore = defineStore("auth", () => {
 
     // Actions
     $reset,
-    checkXsrfTokenCookie,
     setStorageAuthentication,
     getStorageAuthentication,
-    resetStorageAuthentication,
-    requestCsrfToken,
     login,
     register,
     logout,
