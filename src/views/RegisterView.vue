@@ -1,6 +1,11 @@
 <script setup>
   import ViewTemplate from "@/components/global/ViewTemplate.vue"
+  import { useAuthStore } from "@/pinia/auth.js"
+  import { useRouter } from "vue-router"
   import { ref } from "vue"
+
+  const authStore = useAuthStore()
+  const router = useRouter()
 
   const form = ref({
     name: null,
@@ -8,13 +13,32 @@
     password: null,
     password_confirmation: null
   })
+
+  async function register() {
+    await authStore
+      .register(form.value)
+      .then(async (response) => {
+        if (response.status === 200) {
+          authStore.$patch({ user: response.data.user })
+          authStore.setStorageAuthentication()
+          router.push({
+            name: "user-profile",
+            params: { userId: authStore.user.id }
+          })
+        }
+      })
+      .catch((error) => {
+        authStore.$reset()
+        console.log(error)
+      })
+  }
 </script>
 
 <template>
   <div>
     <ViewTemplate>
       <div class="register height-full-screen">
-        <form class="register-form" action="">
+        <form class="register-form" @submit.prevent="register">
           <div>
             <h3 class="sing-up-title mb-4">Crea tu cuenta</h3>
             <p class="register-subtitle">Llena el formulario con tus datos para registrarte.</p>
