@@ -14,8 +14,6 @@ app.use(router)
 
 const authStore = useAuthStore()
 
-if (!authStore.checkXsrfTokenCookie()) await authStore.requestCsrfToken()
-
 if (authStore.getStorageAuthentication()) {
   await authStore
     .me()

@@ -1,21 +1,26 @@
 <script setup>
   import { useAuthStore } from "@/pinia/auth.js"
+  import { useRouter } from "vue-router"
   import { ref } from "vue"
 
+  const router = useRouter()
   const authStore = useAuthStore()
   const logoutLoading = ref(false)
 
   async function logout() {
     logoutLoading.value = true
-    await authStore.logout().then(() => authStore.$reset())
+    await authStore.logout().then(() => {
+      authStore.$reset()
+      router.push({ name: "login" })
+    })
     logoutLoading.value = false
   }
 </script>
 
 <template>
   <div class="auth-nav-links">
-    <p class="auth-nav-link mr-8">{{ authStore.user.name }}</p>
-    <a class="auth-nav-link" href="#" @click.prevent="logout">Cerrar sesión</a>
+    <router-link class="auth-nav-link mr-8" :to="{ name: 'user-profile', params: { userId: authStore.user.id } }">{{ authStore.user.name }}</router-link>
+    <a href="#" class="auth-nav-link" @click.prevent="logout">Cerrar sesión</a>
   </div>
 </template>
 

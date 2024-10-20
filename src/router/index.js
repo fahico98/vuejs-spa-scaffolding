@@ -20,6 +20,13 @@ const routes = [
     path: "/registro",
     name: "register",
     component: () => import("@/views/RegisterView.vue")
+  },
+
+  {
+    path: "/:userId",
+    name: "user-profile",
+    component: () => import("@/views/UserProfileView.vue"),
+    props: true
   }
 ]
 
